@@ -29,11 +29,347 @@ Publish the website in the given URL.
 
 ## PROGRAM:
 ```
-INCLUDE YOUR PROGRAM HERE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Rosé</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url("bg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f6e6ea;
+        }
+
+        header {
+            background-color: rgba(45, 20, 28, 0.95);
+            padding: 1.6rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #f7b6c2;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            margin-top: 0.6rem;
+        }
+
+        nav a {
+            color: #f4a3b4;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            background-color: rgba(255, 245, 248, 0.95);
+            color: #2c1b1f;
+            border-radius: 14px;
+            padding: 2.2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #7a2e3a;
+            border-bottom: 2px solid #d48a9a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #e3c1c9;
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: #9b3f52;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #6a1f2b;
+        }
+
+        .reservation {
+            background-color: #fdecef;
+            padding: 2rem;
+            border-radius: 14px;
+            margin-top: 2.5rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.65rem;
+            margin-top: 0.3rem;
+            border-radius: 6px;
+            border: 1px solid #caa0a9;
+            font-family: 'Lora', serif;
+        }
+
+        button {
+            margin-top: 1.6rem;
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #9b3f52;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+        }
+
+        button:hover {
+            background-color: #7a2e3a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.3rem;
+            background-color: rgba(122, 46, 58, 0.95);
+            color: white;
+            margin-top: 3rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+        .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu-item img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Alternate left-right */
+.menu-item:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.menu-item:nth-child(even) .price {
+    text-align: right;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .menu-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-item:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-item img {
+        width: 100%;
+        height: 180px;
+    }
+}
+.menu-item img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover zoom */
+.menu-item:hover img {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+.menu-item {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 600px) {
+    .menu-item {
+        animation-range: entry 0% entry 60%;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Cafe Rosé</h1>
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#reservation">Reservation</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+<main>
+<section id="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu-item">
+        <img src="images/margherita.jpg" alt="Margherita Pizza">
+        <div>
+            <h3>Margherita Pizza</h3>
+            <p>Classic pizza with fresh mozzarella, basil, and tomato sauce.</p>
+            <p class="price">₹499</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/alfredo.jpg" alt="Fettuccine Alfredo">
+        <div>
+            <h3>Fettuccine Alfredo</h3>
+            <p>Creamy Alfredo sauce tossed with fresh fettuccine.</p>
+            <p class="price">₹549</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/arrabbiata.jpg" alt="Penne Arrabbiata">
+        <div>
+            <h3>Penne Arrabbiata</h3>
+            <p>Penne pasta in a spicy tomato garlic sauce.</p>
+            <p class="price">₹469</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/bruschetta.jpg" alt="Bruschetta">
+        <div>
+            <h3>Bruschetta</h3>
+            <p>Grilled bread topped with tomatoes, olive oil, and herbs.</p>
+            <p class="price">₹299</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/tiramisu.jpg" alt="Tiramisu">
+        <div>
+            <h3>Tiramisu</h3>
+            <p>Classic Italian dessert with coffee-soaked layers.</p>
+            <p class="price">₹349</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/cappuccino.jpg" alt="Rose Cappuccino">
+        <div>
+            <h3>Rose Cappuccino</h3>
+            <p>Espresso blended with milk and a hint of rose essence.</p>
+            <p class="price">₹249</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="reservation" class="reservation">
+        <h2>Reserve a Table</h2>
+
+        <form>
+            <label>Name</label>
+            <input type="text" required>
+
+            <label>Phone</label>
+            <input type="tel" required>
+
+            <label>Date</label>
+            <input type="date" required>
+
+            <label>Time</label>
+            <input type="time" required>
+
+            <label>Guests</label>
+            <select required>
+                <option value="">Select</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+            </select>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+</main>
+
+<footer id="contact">
+    <p>📧 info@caferose.com | ☎ 987-654-3210</p>
+    <p>&copy; 2025 Cafe Rosé</p>
+</footer>
+
+</body>
+</html>
 ```
 
 ## OUTPUT:
-
+<img width="1024" height="503" alt="image" src="https://github.com/user-attachments/assets/abafff12-49db-496c-ae5c-ed5f590eb724" />
+<img width="1036" height="508" alt="image" src="https://github.com/user-attachments/assets/e71861c5-3040-4f82-a1ad-2a924e7dc1d8" />
+<img width="1033" height="505" alt="image" src="https://github.com/user-attachments/assets/7ad30116-09fb-409e-8852-a88446c7a41f" />
+<img width="1030" height="509" alt="image" src="https://github.com/user-attachments/assets/f75af1e4-b5ec-40e5-8392-0d176c22770f" />
 
 ## RESULT:
 The program for designing software company website using HTML and CSS is completed successfully.
+
